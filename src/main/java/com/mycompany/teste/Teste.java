@@ -17,6 +17,7 @@ public class Teste {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
         
+        /*
         String[] options={"Luiz", "Yuri", "Augusto"};
         
         int option = JOptionPane.showOptionDialog(null, "Quem é o tigrão?", "Pergunta do dia.", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
@@ -42,11 +43,53 @@ public class Teste {
         
         //JOptionPane.showInternalInputDialog(null, "A distância entre os pontos ("+xx1+", "+yy1+") e ("+xx2+", "+yy2+") é "+dist, "Distância entre os pontos", JOptionPane.INFORMATION_MESSAGE, null);
         JOptionPane.showMessageDialog(null, "A distância entre os pontos ("+xx1+", "+yy1+") e ("+xx2+", "+yy2+") é "+dist, "Distância entre os pontos", JOptionPane.INFORMATION_MESSAGE, null);
-    
-        String operacao[] = {"+", "-", "x", "/"};
+        */
+        String operacao[] = {"+", "-", "x", "/", "Cancel"};
         
-        String num1, num2;
+        String num1;
+        double n1=0;
+        String num2;
+        double n2=0;
+        String ans;
+        double ans_n=0;
         
-        num1=JOptionPane.showInputDialog(null, "num1");
+        num1=JOptionPane.showInputDialog(null, "Digite um valor:");
+        n1=Double.parseDouble(num1);
+        int option=0;
+        
+        for(; option!=4; )
+        {
+            option = JOptionPane.showOptionDialog(null, n1, "Calculadora", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, operacao, null);
+
+            if(option==4)
+            {
+                continue;
+            }
+            
+            num2=JOptionPane.showInputDialog(null, n1+" "+operacao[option]);
+            n2=Double.parseDouble(num2);
+
+            if(option==0)
+            {
+                ans_n=n1+n2;
+            }
+            else if(option==1)
+            {
+                ans_n=n1-n2;
+            }
+            else if(option==2)
+            {
+                ans_n=n1*n2;
+            }
+            else if(option==3)
+            {
+                ans_n=n1/n2;
+            }
+            
+            //num1=String.parseString(n1);
+            n1=ans_n;
+        }
+        
+        JOptionPane.showMessageDialog(null, "Resultado: "+n1, "Calculadora", JOptionPane.INFORMATION_MESSAGE, null);
     }
 }
